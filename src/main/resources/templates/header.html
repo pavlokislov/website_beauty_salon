@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script type="text/javascript" th:src="@{/js/header.js}"/>
+    <link th:href="@{/css/header.css}"
+          type="text/css"
+          rel="stylesheet"/>
+    <link rel="stylesheet"
+          href="/webjars/bootstrap/4.6.0-1/css/bootstrap.min.css"/>
+    <script src="/webjars/jquery/3.6.0/jquery.slim.min.js"></script>
+    <script src="/webjars/bootstrap/4.6.0-1/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"/>
+
+</head>
+<body>
+<!-- Navbar-->
+<header class="header">
+    <nav class="navbar navbar-expand-lg fixed-top py-3">
+        <div class="container"><a href="#" class="navbar-brand text-uppercase font-weight-bold">PureBeauty</a>
+            <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="PureBeauty"
+                    class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
+
+            <div id="navbarSupportedContent" class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="home.html" class="nav-link text-uppercase font-weight-bold">Home <span
+                            class="sr-only">(current)</span></a></li>
+                    <li class="nav-item"><a href="#" class="nav-link text-uppercase font-weight-bold">Language</a></li>
+                    <li class="nav-item"><a href="/booking" class="nav-link text-uppercase font-weight-bold">Book</a></li>
+                    <li class="nav-item"><a href="/signUp" class="nav-link text-uppercase font-weight-bold">SignUp</a></li>
+                    <li class="nav-item"><a href="/profile" class="nav-link text-uppercase font-weight-bold">Profile</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<script>
+    $(function () {
+        $(window).on('scroll', function () {
+            if ( $(window).scrollTop() > 10 ) {
+                $('.navbar').addClass('active');
+            } else {
+                $('.navbar').removeClass('active');
+            }
+        });
+    });
+</script>
+</body>
+</html>

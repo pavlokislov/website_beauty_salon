@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Info</title>
+</head>
+<body>
+<h2>
+    <p th:text="'Admin Page '+${user.firstName}"></p>
+</h2>
+
+
+<form method="post" th:action="@{/adminInfo}">
+    <table>
+        <thead>
+        <tr>
+            <th> Id</th>
+            <th> Master name </th>
+            <th> Time</th>
+            <th> Service Status</th>
+            <th>Price</th>
+            <th> Cancel</th>
+            <th>
+                Another time
+            </th>
+            <th>Change time</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${records.empty}">
+            <td colspan="2"> No records yet</td>
+        </tr>
+        <tr th:each="record : ${records}">
+            <td><span th:text="${record.id}"> Id </span></td>
+            <td><span th:text="${record.masters.user.firstName}"> Name master </span></td>
+            <td><span th:text="${record.localDateTime}"> Time </span></td>
+            <td><span th:text="${record.serviceStatus}"> Status </span></td>
+            <td><span th:text="${record.services.price}"> Price </span></td>
+
+            <td>
+                <button th:value="${record.masters.user.id}" name="id">Cancel</button>
+            </td>
+
+
+            <th>
+                <select th:name="newTime">
+                    <option hidden="hidden" value=""> -- select an option --</option>
+                    <option th:each="time : ${allSchedule.findAvailableTime(record.masters.user.id)}"
+                            th:value="${time.toString()}"
+                            th:utext="${time.toString()}" >...</option>
+                </select>
+            </th>
+
+            <td>
+                <button th:value="${record.id}" name="recordId">Change time</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+
+
+<form th:action="@{/home}">
+    <input type="submit" value="Go to home"/>
+</form>
+
+</body>
+</html>

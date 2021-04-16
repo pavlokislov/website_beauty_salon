@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Title</title>
+</head>
+<body>
+<form th:action="post">
+    <p th:text="'Service ID: ' + ${order.serviceId}"/>
+    <p th:text="'Service Name: ' + ${order.service}"/>
+    <p th:text="'Price: ' + ${order.price}"/>
+    <p th:text="'Master ID: ' + ${order.masterId}"/>
+    <p th:text="'Master name: ' + ${order.maserName}"/>
+    <p th:text="'Time: ' + ${order.time}"/>
+</form>
+<h2>Choose a master</h2>
+<form th:action="@{/booking2}" method="post" th:object="${order}">
+    <select required="required" name="name" th:field="${order.masterId}">
+        <option hidden="hidden" value=""> -- select an option -- </option>
+        <option th:each="master : ${order.mastersIdNames}"
+                th:value="${master[0]}"
+                th:utext="${master[1]}"/>
+    </select>
+    <button class="btn btn-primary" type="submit">Next</button>
+</form>
+</body>
+</html>

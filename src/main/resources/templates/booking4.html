@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Title</title>
+</head>
+<body>
+<form th:action="post">
+    <p th:text="'Service ID: ' + ${order.serviceId}"/>
+    <p th:text="'Service Name: ' + ${order.service}"/>
+    <p th:text="'Price: ' + ${order.price}"/>
+    <p th:text="'Master ID: ' + ${order.masterId}"/>
+    <p th:text="'Master name: ' + ${order.maserName}"/>
+    <p th:text="'Time: ' + ${order.time}"/>
+</form>
+
+<form th:action="@{/booking4}" method="post">
+    <button class="btn btn-primary" type="submit">Submit the order</button>
+</form>
+
+<form th:action="@{/booking/payment}">
+    <input type="submit" value="Pay Online"/>
+</form>
+
+<form th:action="@{/home}">
+    <input type="submit" value="Pay by cash later"/>
+</form>
+
+</body>
+</html>

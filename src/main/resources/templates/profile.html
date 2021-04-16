@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Profile</title>
+    <link th:href="@{/css/header.css}"
+          type="text/css"
+          rel="stylesheet"/>
+
+    <link rel="stylesheet"
+          href="/webjars/bootstrap/4.6.0-1/css/bootstrap.min.css"/>
+    <script src="/webjars/jquery/3.6.0/jquery.slim.min.js"></script>
+    <script src="/webjars/bootstrap/4.6.0-1/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <link th:href="@{/css/styles.css}"
+          type="text/css"
+          rel="stylesheet"/>
+</head>
+<body>
+<div style="height: 150px">
+</div>
+<div th:replace="header :: header">...</div>
+<script>
+    $(function () {
+        $(window).on('scroll', function () {
+            if ($(window).scrollTop() > 10) {
+                $('.navbar').addClass('active');
+            } else {
+                $('.navbar').removeClass('active');
+            }
+        });
+    });
+</script>
+
+
+<div class="container">
+    <p th:text="'First Name: ' + ${user.firstName}"/>
+
+    <p th:text="'Last Name: ' + ${user.lastName}"/>
+
+    <form th:action="@{/profile}" method="POST" th:object="${book}">
+        <button name="userAction" value="Book">Book a service</button>
+    </form>
+
+    <a href="/logout">Log out</a>
+    <a href="/master">Master Info</a>
+    <a href="/adminInfo">Admin Info</a>
+
+
+</div>
+<!--</div>-->
+<!--<form method="post" th:action="@{/profile}" th:object="${book}" class="mt-5">-->
+<!--<div class="custom-control custom-radio custom-control-inline">-->
+<!--    <input type="radio" id="option1" name="option1" value="1" th:field="*{answer}"></input>-->
+<!--    <label for="option1">Option1</label>-->
+<!--</div>-->
+<!--    <button class="btn btn-primary" type="submit">Submit form</button>-->
+
+<!--</form>-->
+
+</body>
+</html>

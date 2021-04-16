@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Title</title>
+</head>
+<body>
+<form th:action="post">
+    <p th:text="'Service ID: ' + ${order.serviceId}"/>
+    <p th:text="'Service Name: ' + ${order.service}"/>
+    <p th:text="'Price: ' + ${order.price}"/>
+    <p th:text="'Master ID: ' + ${order.masterId}"/>
+    <p th:text="'Master name: ' + ${order.maserName}"/>
+    <p th:text="'Time: ' + ${order.time}"/>
+</form>
+
+
+<h2>Choose a Time</h2>
+<form th:action="@{/booking3}" method="post" th:object="${order}">
+    <select required="required" name="name" th:field="${order.time}">
+        <option hidden="hidden" value=""> -- select an option --</option>
+        <option th:each="time : ${order.availableTime}"
+                th:value="${time.toString()}"
+                th:utext="${time.toString()}" >...</option>
+<!--                        "' '+-->
+<!--                     ${time.getDayOfWeek().toString()}+', '-->
+<!--                     +${time.getMonth()}+' '+-->
+<!--                     ${time.getDayOfMonth()} +', '-->
+<!--                 +   ${time.getHour()}+':'+${time.getMinute()}"></option>-->
+
+    </select>
+    <button class="btn btn-primary" type="submit">Next</button>
+</form>
+
+</body>
+</html>

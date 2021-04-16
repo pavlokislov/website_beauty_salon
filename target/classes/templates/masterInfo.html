@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Master Info</title>
+</head>
+<body>
+<h2>
+    <p th:text="'Schedule for master '+${user.firstName}"></p>
+</h2>
+
+    <form method="post" th:action="@{/master}">
+    <table>
+        <thead>
+        <tr>
+            <th> Time</th>
+            <th> Status</th>
+            <th> Done</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${mastersSchedule.empty}">
+            <td colspan="2"> No records yet</td>
+        </tr>
+        <tr th:each="record : ${mastersSchedule}">
+            <td><span th:text="${record.localDateTime}"> Time </span></td>
+            <td><span th:text="${record.serviceStatus}"> Status </span></td>
+            <td>
+                <button th:value="${record.id}" name="id">Done</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+
+
+
+
+    <form th:action="@{/home}">
+        <input type="submit" value="Go to home"/>
+    </form>
+
+
+</body>
+</html>

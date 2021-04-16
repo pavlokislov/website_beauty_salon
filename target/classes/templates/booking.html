@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Booking</title>
+</head>
+<body>
+<p th:text="'Service ID: ' + ${order.serviceId}"/>
+<p th:text="'Service Name: ' + ${order.service}"/>
+<p th:text="'Price: ' + ${order.price}"/>
+<p th:text="'Master ID: ' + ${order.masterId}"/>
+<p th:text="'Master name: ' + ${order.maserName}"/>
+<p th:text="'Time: ' + ${order.time}"/>
+
+
+<h3>Choose a service</h3>
+<form th:action="@{/booking}" method="post" th:object="${order}">
+    <select required="required" name="name" th:field="${order.serviceId}">
+        <option hidden="hidden" value=""> -- select an option --</option>
+        <option th:each="master : ${order.servicesList}"
+                th:value="${master.id}"
+                th:utext="${master.name}"/>
+    </select>
+    <button class="btn btn-primary" type="submit"> Next</button>
+</form>
+
+
+<script>
+    $(document).ready(function () {
+        $("#choose").click(function () {
+            $(document.getElementById("myDIV")).hide(300);
+            $(document.getElementById("myId")).show(300);
+        });
+    });
+</script>
+
+
+</body>
+</html>
