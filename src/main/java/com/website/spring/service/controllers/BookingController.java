@@ -31,7 +31,6 @@ public class BookingController {
     @Autowired
     private MasterScheduleRepository masterScheduleRepository;
 
-
     private BookingDto wholeBookingDto;
 
     @GetMapping("/booking")
